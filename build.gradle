@@ -1,0 +1,36 @@
+apply plugin: "java"
+apply plugin: "idea"
+apply plugin: "war"
+apply plugin: 'spring-boot'
+
+
+dependencies {
+    compile "org.springframework.boot:spring-boot-starter-web"
+    compile "org.springframework.boot:spring-boot-starter-actuator"
+    compile "org.springframework.boot:spring-boot-starter-velocity"
+    compile "org.springframework.social:spring-social-facebook"
+    //compile "org.springframework.boot:spring-boot-starter-freemarker"
+    //compile "org.springframework.boot:spring-boot-starter-security" //protects actuator end points and generates password with basic authentication by default
+    compile "org.springframework:spring-jdbc"
+    compile 'com.h2database:h2'
+}
+
+repositories {
+    mavenCentral()
+}
+
+bootRepackage {
+    mainClass = 'com.san.springboot.HelloWorldController'
+}
+
+buildscript {
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.1.8.RELEASE")
+        classpath('org.yaml:snakeyaml:1.14')
+    }
+
+    repositories {
+        mavenCentral()
+    }
+}
+
